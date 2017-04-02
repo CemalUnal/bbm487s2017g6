@@ -1,18 +1,4 @@
-<!--
-<html>
-   <head>
-      <title>Otel Rezervasyon Sistemi</title>      
-   </head>
-   
-   <body text="2D1D06" bgcolor="#F7EEE1">
-      <header style=" text-align: center; font-size: 300% ; ; color:#2D1D06 ">Otel Rezervasyonu</header>
-      <hr/>
-      <?php
-      //   echo "<h1>Hello, PHP!</h1>";
-      ?>
 
-   </body>
-</html>-->
 <?php
 include("../Controller/index.php");
 session_start();
@@ -159,15 +145,6 @@ article {
       
        </div>
 
-
- <!-- 
-<nav>
-  <ul>
-    <li><a href="#">London</a></li>
-    <li><a href="#">Paris</a></li>
-    <li><a href="#">Tokyo</a></li>
-  </ul>
-</nav>-->
 <br></br>
 <?php 
 //include("session.php");
@@ -181,8 +158,6 @@ article {
 <article>
   
 </article>
-
-<!--<footer>Otel Rezervasyon Sistemi</footer>-->
 
 </div>
 
