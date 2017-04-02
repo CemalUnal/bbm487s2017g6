@@ -189,30 +189,7 @@ $('#search').keyup(function() {
     $(this).toggleClass('hover');
 });
 </script>
-<!--<?php/*
-$result=mysqli_query($conn,"SELECT * FROM (
-    SELECT * FROM lastevents ORDER BY lastid DESC LIMIT 10
-) sub
-ORDER BY lastid ASC");
-echo "<table id='table' border='1' class='table2' >
 
-<tr>
-<th >SON EKLENEN ETKİNLİKLER</th>
-
-</tr>";
-
-while($row = mysqli_fetch_array($result))
-{
-echo "<tr>";
-
-echo "<td>"  ;
-echo $row['event_calendarname'] ;
-echo '<a href="user.php?userId='. $row['event_calendarname'] .'"/>';
-echo "</td>";
-echo "</tr>";
-}
-echo "</table>";*/
- ?>-->
 </div>
 
 
