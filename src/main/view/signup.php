@@ -16,9 +16,10 @@ $(function(){
 <body>
 <div id="header"></div>
 <div class="container">
+<div class="fonts">
             <div align="center">
                <form action = "../Controller/saveuser.php" method = "post">
-               <div style="margin-left: 0px; margin-top: 20px;">
+               <div style="margin-left: 10px; margin-top: 20px;">
                   <label>Ad :</label><input type = "text" name = "name" class = "box" /><br /><br />
                   </div>
                     <div style="margin-left: -15px; ">
@@ -34,7 +35,7 @@ $(function(){
                   </div>
                </form>
                </div>
-              
+              </div>
 </div>
 
 <div id="footer"></div>
