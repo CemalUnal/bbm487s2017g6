@@ -1,3 +1,4 @@
+
 <?php 
  
 include("index.php");
@@ -34,8 +35,9 @@ if(mysqli_num_rows($sql_check))  {
     $_SESSION["user"] = $email;
     $_SESSION["pass"] = $passwords;
 $row = mysqli_fetch_array($sql_check);
-    $_SESSION["id"] = $row["user_id"];
+    $_SESSION["id"] = $row["id"];
     $_SESSION["name"] = $row["name"];
+    $_SESSION["admin"] = $row["admin"];
     header("Location:../View/home.php");
 }
 else {
