@@ -25,6 +25,14 @@ header{
     font-size: 120%;
 
   }
+
+  div.fonts {
+    font-weight: bold;
+    color: #4B3B0A;
+      font-family: fantasy, 'Blippo', fantasy;
+      font-size: 101%;
+    }
+
 div.img {
     margin: 5px;
     border: 1px solid #C9BD97;
@@ -131,33 +139,38 @@ article {
 
 <a href="../Controller/logout.php" class="button button0" >ÇIKIŞ YAP</a>
 <a href="mybooks.php" class="button button0" >KİTAPLARIMI GÖRÜNTÜLE</a>
-        <?php    if($_SESSION["user"]=='admin@cs'){ ?>
+<a href="userinfo.php" class="button button0" >BİLGİLERİMİ GÖRÜNTÜLE</a>
+        <?php    if($_SESSION["admin"]==1){ ?>
  <a href="adminuser.php" class="button button0" >KULLANICILAR</a>
  <?php } ?>
-        <?php    if($_SESSION["user"]=='admin@cs'){ ?>
+        <?php    if($_SESSION["admin"]==1){ ?>
  <a href="books.php" class="button button0" >KİTAPLAR</a>
  <?php } ?>
 
    <h1 style="text-align: center;">KÜTÜPHANE SİSTEMİ</h1>
     </header>
         <div align="center">
-       <a href="home.php" style=" color: #4B3B0A;font-family: fantasy, 'Blippo', fantasy; margin-left:20px;">ANA SAYFA</a>
-      
+       <a href="home.php" style=" font-weight: bold; color: #4B3B0A;font-family: fantasy, 'Blippo', fantasy; margin-left:20px;">ANA SAYFA</a>
        </div>
 
+
+
 <br></br>
+<div class="fonts">
 <?php 
 //include("session.php");
 //session_start();
  if (isset($_SESSION["user"])) {
-         $loggenOnUser = $_SESSION["name"];
+         $loggenOnUser = strtoupper($_SESSION["name"]);
          echo "HOŞGELDİN ", $loggenOnUser, "<br />";
      }
 
  ?>
+ </div>
 <article>
   
 </article>
+
 
 </div>
 
