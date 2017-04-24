@@ -38,11 +38,17 @@ div.img:hover {
     border: 1px solid #777;
 }
 
+
 div.img img {
     width: 100%;
     height: auto;
 }
 
+
+
+
+
+/*----------------------------------------------------------------------------*/
 /*div.desc {
     padding: 15px;
     text-align: center;
@@ -115,6 +121,26 @@ tr.hover {
    cursor: pointer;
    /* whatever other hover styles you want */
 }
+
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #4B3B0A;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #4B3B0A;
+    background-color: #DECEA6;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+
 </style>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script> 
@@ -125,7 +151,7 @@ $(function(){
       $("#header").load("signed.php");
    <?php } 
 else { ?>
-	 $("#header").load("library.html"); 
+	 $("#header").load("../View/library.html"); 
 <?php } ?>
   $("#footer").load("footer.html");
   });
@@ -135,10 +161,40 @@ else { ?>
 <div id="header"></div>
 <div class="container">
  <div align="center">
-            <h2 style="color: #4B3B0A">KİTAPLAR</h2>
-<div align="right">
-<input type="text" id="search"  placeholder="Kitap Ara">
+       <div align="left">
+<form action = "../Controller/searchBook.php" method = "post">
+  <input type="text" name="search" placeholder="Kitap Ara..">
+  <input type="submit" name="go" value="Submit" style="display: none;" />
+</form>
+<!--<input type="text" id="search"  placeholder="Kitap Ara">-->
 </div>
+
+<script type="text/javascript">
+/*$(function() {
+    $("form input").keypress(function (e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            $('button[type=submit] .default').click();
+            return false;
+        } else {
+            return true;
+        }
+    });
+});*/
+
+$("input").keypress(function(event) {
+    if (event.which == 13) {
+        event.preventDefault();
+        $("form").submit();
+    }
+});
+</script>
+
+            <h2 style="font-weight: bold; color: #4B3B0A;font-family: fantasy, 'Blippo', fantasy;">KİTAPLAR</h2>
+
+<!--<div align="right">
+<input type="text" id="search"  placeholder="Kitap Ara">
+</div>-->
+<div class="fonts">
 <?php
 $result = mysqli_query($conn,"SELECT * FROM books");
 
@@ -146,9 +202,10 @@ echo "<table id='table' border='1'>
 <tr>
 <th>Kitabın Adı</th>
 <th>Yazarı</th>
-<th>Basım Yılı</th>
-<th>Uygunluk Durumu</th>
-</tr>";
+<th>Basım Yılı</th>";
+if(isset($_SESSION['login'])==true && $_SESSION['login']==true)
+echo "<th>Uygunluk Durumu</th>";
+echo "</tr>";
 
 while($row = mysqli_fetch_array($result))
 {
@@ -160,10 +217,11 @@ echo '<a href="bookinfo.php?bookId='. $row['id'] .'"/>';
 echo "</td>";
 echo "<td>" . $row['author'] . "</td>";
 echo "<td>". $row['year'] . "</td>";
+if(isset($_SESSION['login'])==true && $_SESSION['login']==true){
 if ( $row['available']==0 )
 echo "<td> Uygun </td>";
 else 
-echo "<td> Uygun Değil </td>";
+echo "<td> Uygun Değil </td>";}
 //echo '</a>';
 echo "</tr>";
 }
@@ -182,6 +240,7 @@ $('#search').keyup(function() {
     }).hide();
 });
 </script>
+</div>
 <script type="text/javascript">
   $('tr').click( function() {
     window.location = $(this).find('a').attr('href');
@@ -189,6 +248,7 @@ $('#search').keyup(function() {
     $(this).toggleClass('hover');
 });
 </script>
+
 
 </div>
 
