@@ -13,6 +13,7 @@ $(function(){
 <body>
 <div id="header"></div>
 <div class="container">
+<div class="fonts">
             <div align="center">
             <div id="login">
                <form action = "../Controller/session.php" method = "post">
@@ -24,10 +25,11 @@ $(function(){
                   <input type = "submit" class="button button0" style="margin-right: 467px" value = " GİRİŞ YAP "/><br />
 <br /><br /><br /> <br />
 
-                   <a href="../Controller/signup.php" style=" color: #4B3B0A;font-family: fantasy, 'Blippo', fantasy; margin-left:40px">Hesabınız Yoksa Hemen Üye Olun!</a>
+                   <a href="../View/signup.php" style=" color: #4B3B0A;font-family: fantasy, 'Blippo', fantasy; margin-left:40px">Hesabınız Yoksa Hemen Üye Olun!</a>
                   </div>
 
                </form>
+               </div>
                </div>
                </div>
 </div>
