@@ -30,7 +30,8 @@ session_start();
 } 
 
     else{
-    echo "<center>Lutfen tekrar kontrol ediniz! <a href=javascript:history.back(-1)>Geri Don</a></center>";
+       header("Location: ../View/changepass.php?err=1"); 
+    //echo "<center>Lutfen tekrar kontrol ediniz! <a href=javascript:history.back(-1)>Geri Don</a></center>";
 }
 
 
