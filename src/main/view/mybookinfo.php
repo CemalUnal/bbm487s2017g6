@@ -113,8 +113,9 @@ $(function(){
     <?php
 
 $bookId = $_GET['bookId'];
-
-$result2 = mysqli_query($conn,"SELECT * FROM userbooks WHERE bookId='$bookId' ");
+$returned = $_GET['returned'];
+$user = $_SESSION['id'];
+$result2 = mysqli_query($conn,"SELECT * FROM userbooks WHERE bookid='$bookId' AND userid='$user' AND returned='$returned'  ");
 $row = mysqli_fetch_array($result2);
 mysqli_free_result($result2);
 mysqli_next_result($conn); 
@@ -134,6 +135,10 @@ echo  "<br>";
 echo str_repeat('&nbsp;', 99);
 echo   '<font size="4.5">'." Kitabın Yazarı: ".'</font>';
 echo   '<font size="4.5">' .$row2["author"].'</font>';
+echo  "<br>"; 
+echo str_repeat('&nbsp;', 99);
+echo   '<font size="4.5">'." Barkodu: ".'</font>';
+echo   '<font size="4.5">' .$row2["barcode"].'</font>';
 echo  "<br>"; 
 echo str_repeat('&nbsp;', 99);
 echo   '<font size="4.5">'." Alınan Tarih ".'</font>';
@@ -159,13 +164,12 @@ else if($end<0 && $row['returned']==0 ){
   echo  '<font size="4.5">'."Ceza Miktarı: ".'</font>'; 
 echo  '<font size="4.5">' . -$end*1 ."TL".'</font>'; 
 }
-
 echo "<br>";
 
 
     
-            
-               echo '<a href="reservation.php?hotelId='. $bookId .'"  class="button button0">KİTABI İADE ET</a>';
+            if($row['returned']==0)
+               echo '<a href="returnbook.php?bookId='. $bookId .'"  class="button button0">KİTABI İADE ET</a>';
           
                
         
