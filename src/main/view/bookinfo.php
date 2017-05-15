@@ -117,7 +117,16 @@ else { ?>
   <div class="fonts">
 
     <?php
-
+if(isset($_GET['err'])&&$_GET['err']==1){
+   echo "<br></br>";
+  echo "Şuanda elinizde olan kitap sayısı sınırdadır. Lütfen kitap iade edip tekrar deneyiniz!";
+  echo "<br></br>";
+}
+if(isset($_GET['err'])&&$_GET['err']==2){
+   echo "<br></br>";
+  echo "Şuanda bekleme listesinde olan kitap sayınız sınırdadır. Lütfen onları teslim aldıktan sonra deneyiniz!";
+  echo "<br></br>";
+}
 $bookId = $_GET['bookId'];
  if(isset($_GET['line']) ) {
       echo "<br></br>";
@@ -172,11 +181,15 @@ echo "<br>";
                if($lines==0&&$lines2==0 ) {
               echo '<a href="../Controller/addWaitList.php?bookId='. $bookId .'"  class="button button0">KİTAP BEKLEME LİSTESİNE ADIMI EKLE</a>';
             }
-            if($lines2==0){
+             if($lines2==0&&$lines!=0){
               echo str_repeat('&nbsp;', 150);
                echo "Bu Kitap İçin Bekleme Listesindesiniz!";
         
                }
+                 if($lines2!=0&&$lines==0){
+                echo '<a href="returnbook.php?bookId='. $bookId .'"  class="button button0">KİTABI İADE ET</a>';
+               }
+             
             }
        } 
 
