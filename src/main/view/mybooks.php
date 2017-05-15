@@ -50,29 +50,41 @@ $(function(){
 $id=$_SESSION["id"];
 $result = mysqli_query($conn,"SELECT * FROM userbooks WHERE userid='$id'");
 $row = mysqli_fetch_array($result);
-mysqli_free_result($result);
-mysqli_next_result($conn);
 $date = date("Y-m-d");
-$end = strtotime($row['returndate'])-strtotime($date);
-$end = floor($end / (60 * 60 * 24));
+/*while($row = mysqli_fetch_array($result))
+{
+$end2 = strtotime($row['returndate'])-strtotime($date);
+$end = floor($end2 / (60 * 60 * 24));
+}*/
 echo "<table id='table' border='1'>
 <tr>
 <th>Kitabın Adı</th>
 <th>Yazarı</th>
 <th>Alınan Tarih</th>
 <th>Teslim Tarihi</th>
-<th>Teslim Durumu</th>";
+<th>Teslim Durumu</th>
+<th>Kalan Süre-Ceza Miktarı</th>";
+
+/*while($row = mysqli_fetch_array($result))
+{
+  $end2 = strtotime($row['returndate'])-strtotime($date);
+$end = floor($end2 / (60 * 60 * 24));
 if($end>=0 && $row['returned']==0) 
   echo "
-<th>Kalan Süre</th>
+<th>Kalan Süre-Ceza Miktarı</th>
 </tr>";
 else if($end<0&& $row['returned']==0)
 echo "
 <th>Ceza Miktarı</th>
 </tr>";
+}*/
+mysqli_free_result($result);
+mysqli_next_result($conn);
 $result = mysqli_query($conn,"SELECT * FROM userbooks WHERE userid='$id'");
 while($row = mysqli_fetch_array($result))
 {
+  $end2 = strtotime($row['returndate'])-strtotime($date);
+$end = floor($end2 / (60 * 60 * 24));
   $bookids=$row['bookid'];
   $result2 = mysqli_query($conn,"SELECT * FROM books WHERE id='$bookids'");
   $row2 = mysqli_fetch_array($result2);
@@ -80,7 +92,7 @@ echo "<tr>";
 
 echo "<td>"  ;
 echo $row2['name'] ;
-echo '<a href="mybookinfo.php?bookId='. $row['bookid'] .'"/>';
+echo '<a href="mybookinfo.php?bookId='. $row['bookid'] .'&returned='.$row['returned'].'"/>';
 echo "</td>";
 echo "<td>" . $row2['author'] . "</td>";
 echo "<td>". $row['loandate'] . "</td>";
@@ -89,10 +101,19 @@ if($row['returned']==0)
   echo "<td>Teslim Edilmedi</td>";
 else
   echo "<td>Teslim Edildi</td>";
+if($row['returned']==0){
 if($end>=0)
 echo "<td>". $end ." Gün". "</td>";
-else
+else{
 echo "<td>". -$end*1 ."TL". "</td>";
+$user=$_SESSION['id'];
+$result2=mysqli_query($conn,"UPDATE userbooks SET paid=0 WHERE bookid='$bookids' AND userid='$user' ");
+//mysqli_free_result($result2);
+//mysqli_next_result($conn);
+}}
+else{
+  echo "<td> Kitabınız İade Edilmiştir. </td>";
+}
 //echo '</a>';
 echo "</tr>";
 }
