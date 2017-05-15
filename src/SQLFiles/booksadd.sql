@@ -1,9 +1,4 @@
-/*
--- Query: SELECT * FROM library.books
-LIMIT 0, 1000
 
--- Date: 2017-05-13 17:55
-*/
 INSERT INTO `books` (`id`,`name`,`author`,`year`,`available`,`barcode`) VALUES (2,'Calikusu','Resat Nuri Guntekin',1922,0,'1222');
 INSERT INTO `books` (`id`,`name`,`author`,`year`,`available`,`barcode`) VALUES (3,'aabb','aa',2010,0,'11111');
 INSERT INTO `books` (`id`,`name`,`author`,`year`,`available`,`barcode`) VALUES (5,'bbb','bbb',111,0,'1111');
