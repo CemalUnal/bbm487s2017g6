@@ -151,9 +151,16 @@ article {
     </header>
         <div align="center">
        <a href="home.php" style=" font-weight: bold; color: #4B3B0A;font-family: fantasy, 'Blippo', fantasy; margin-left:20px;">ANA SAYFA</a>
+       <br/>
+       <?php
+        $id = $_SESSION["id"];
+        $result = mysqli_query($conn,"SELECT * FROM messages WHERE userid='$id' AND alreadyread=0");
+        $row = mysqli_fetch_array($result);
+          if(sizeof($row)>0)
+            echo "<a href='borrowfromwait.php' style=' font-weight: bold; color: #4B3B0A;font-family: fantasy, 'Blippo', fantasy; margin-left:20px;''>Bekleme Listesinde Olduğunuz Bir 
+          Kitap Uygun Durumdadır. Lütfen Almak İçin Bu Sayfayı Görüntüleyin!</a>";
+        ?>
        </div>
-
-
 
 <br></br>
 <div class="fonts">
