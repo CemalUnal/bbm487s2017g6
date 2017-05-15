@@ -12,8 +12,6 @@ $barcode = $_POST['barcode'];
 
 
 
-
- 
 $result = mysqli_query($conn,"INSERT INTO books(name,author,year,available,barcode) VALUES ('$name','$author','$year',0,'$barcode') ");
 
 
