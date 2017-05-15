@@ -127,15 +127,15 @@ $(function(){
                   
 
 </div>
-</div> 
-                                    <div style="margin-left: 20px; margin-bottom: 100px;">
-                                <?php
 
-                ?>
+                                    <div style="margin-left: 20px; margin-bottom: 100px;">
+                            <!--    <?php
+
+                ?>-->
                 
                 <!--  <div style="margin-left: 20px; margin-bottom: 100px;">-->
                   <input type = "submit" class="button button0" value = " KİTABI EKLE "/><br />
-                  </div>
+                  </div></div> 
                </form>
 </div></div>
 <div id="footer"></div>
