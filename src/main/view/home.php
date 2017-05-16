@@ -142,7 +142,7 @@ input[type=text]:focus {
 }
 
 </style>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script> 
 $(function(){
  <?php 
